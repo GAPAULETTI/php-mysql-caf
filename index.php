@@ -5,6 +5,7 @@
 </head>
 <body>
    <?php include"./inc/navbar.php"; ?>
+   <?php include"./inc/script.php"; ?>
 
 </body>
 </html>

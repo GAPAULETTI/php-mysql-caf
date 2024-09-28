@@ -22,21 +22,27 @@
 
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">Usuarios</a>
-
         <div class="navbar-dropdown ">
-          <a class="navbar-item">
-            About
-          </a>
-          <a class="navbar-item is-selected">
-            Jobs
-          </a>
-          <a class="navbar-item">
-            Contact
-          </a>
-          <hr class="navbar-divider">
-          <a class="navbar-item">
-            Report an issue
-          </a>
+          <a class="navbar-item">Nuevo</a>
+          <a class="navbar-item">Lista</a>
+          <a class="navbar-item">Buscar</a>
+        </div>
+      </div>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">Categorias</a>
+        <div class="navbar-dropdown ">
+          <a class="navbar-item">Nuevo</a>
+          <a class="navbar-item">Lista</a>
+          <a class="navbar-item">Buscar</a>
+        </div>
+      </div>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">Productos</a>
+        <div class="navbar-dropdown ">
+          <a class="navbar-item">Nuevo</a>
+          <a class="navbar-item">Lista</a>
+          <a class="navbar-item">Categorias</a>
+          <a class="navbar-item">Buscar</a>
         </div>
       </div>
     </div>
