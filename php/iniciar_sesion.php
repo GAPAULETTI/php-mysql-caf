@@ -15,29 +15,29 @@
     
 
     # Verificar integridad de los datos
-    if(verificar_datos("[a-zA-Z0-9]{4,20}", $usuario)){
+    if(verificar_datos("[a-zA-Z0-9]{4,20}",$usuario)){
         echo '<div class="notification is-danger is-light">
                 <strong> Ocurrió un error inesperado!!!</strong><br>
                 El usuario contiene caracteres no permitidos.
             </div>';
         exit();
     }
-    if(verificar_datos("[a-zA-Z0-9$@.-]{4,20}", $clave)){
+    if(verificar_datos("[a-zA-Z0-9$@.-]{4,100}",$clave)){
         echo '<div class="notification is-danger is-light">
         <strong> Ocurrió un error inesperado!!!</strong><br>
-        El clave contiene caracteres no permitidos.
+        La clave contiene caracteres no permitidos.
         </div>';
         exit();
     }
 
     $check_user=db_connect();
-    $check_user=$check_user->query("SELECT * FROM usuario 
-    WHERE usuario_usuario='$usuario'");
+    $check_user=$check_user->query("SELECT * FROM usuario WHERE usuario_usuario='$usuario'");
 
     if($check_user->rowCount()==1){
         $check_user=$check_user->fetch();
 
         if($check_user['usuario_usuario']==$usuario && password_verify($clave, $check_user['usuario_clave'])){
+        
             
             $_SESSION['id']=$check_user['usuario_id'];
             $_SESSION['nombre']=$check_user['usuario_nombre'];
@@ -45,9 +45,9 @@
             $_SESSION['usuario']=$check_user['usuario_usuario'];
             
             if(headers_sent()){
-                echo "<script>window.location.href='index.php?views=home'</script>";
+                echo "<script> window.location.href='index.php?vista=home'; </script>";
             }else{
-                header("Location: index.php?views=home");
+                header("Location: index.php?vista=home");
             }
 
         }else{
@@ -62,7 +62,7 @@
         <strong> Ocurrió un error inesperado!!!</strong><br>
         El usuario no existe..
         </div>';
-    };
+    }
     $check_user=null;
 
 

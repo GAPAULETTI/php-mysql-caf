@@ -10,13 +10,18 @@
       if(!isset($_GET['vista']) || $_GET['vista']==""){
          $_GET['vista']="login";
       }
-      if(is_file("./views/".$_GET['vista'].".php") && $_GET['vista']!="login" && $_GET['vista']!='404' ){
-         
-         include"./inc/navbar.php"; 
+      if(is_file("./views/".$_GET['vista'].".php") && $_GET['vista']!="login" && $_GET['vista']!="404"){
+
+         if((!isset($_SESSION['id']) || $_SESSION['id']=="") || (!isset($_SESSION['usuario']) || $_SESSION['usuario']=="")){
+            include "./views/logout.php";
+            exit();
+        }
+   
+         include "./inc/navbar.php"; 
       
          include "./views/".$_GET['vista'].".php";
          
-         include"./inc/script.php";
+         include "./inc/script.php";
       }else{
          if($_GET['vista']=="login"){
             include "./views/login.php";
