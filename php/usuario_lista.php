@@ -1,6 +1,6 @@
 <?php
 
-    $inicio = ($pagina>0) ? (($paginas * $registros)- $registros) : 0;
+    $inicio = ($pagina>0) ? (($pagina * $registros)- $registros) : 0;
     $tabla="";
 
     if(isset($busqueda) && $busqueda!=""){
@@ -54,10 +54,10 @@
                     <td>'.$rows['usuario_usuario'].'</td>
                     <td>'.$rows['usuario_email'].'</td>
                     <td>
-                        <a href="#" class="button is-success is-rounded is-small">Actualizar</a>
+                        <a href="index.php?vista=user_update&user_ip_up='.$rows['usuario_nombre'].'" class="button is-success is-rounded is-small">Actualizar</a>
                     </td>
                     <td>
-                        <a href="#" class="button is-danger is-rounded is-small">Eliminar</a>
+                        <a href="'.$url.$pagina.'&user_id_del='.$rows['usuario_nombre'].'" class="button is-danger is-rounded is-small">Eliminar</a>
                     </td>
                 </tr>
             ';
@@ -86,8 +86,15 @@
         }
     }
 
-    $tabla.='
-        </tbody>
-        </table>
-    </div>
-    ';
+    
+    $tabla.='</tbody></table></div>';
+    if($total>=1 && $pagina<=$nPaginas){
+        $tabla.='<p class="has-text-right">Mostrando usuarios <strong>'.$pag_inicio.'</strong>
+                 al <strong>'.$pag_final.'</strong> de un <strong>total de '.$total.'</strong></p>';
+    }
+    
+    $conexion=null;
+    echo $tabla;
+    if($total>=1 && $pagina<=$nPaginas){
+     echo paginador_tablas($pagina,$nPaginas,$url,7);
+    }

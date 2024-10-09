@@ -1,13 +1,13 @@
-<?php require"./inc/session_start.php"; ?>
+<?php require"./inc/session_start.php";?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <?php include"./inc/head.php"; ?>
+<?php  ob_start(); ?>
 </head>
 <body>
-   <?php 
-   
-      if(!isset($_GET['vista']) || $_GET['vista']==""){
+   <?php
+   if(!isset($_GET['vista']) || $_GET['vista']==""){
          $_GET['vista']="login";
       }
       if(is_file("./views/".$_GET['vista'].".php") && $_GET['vista']!="login" && $_GET['vista']!="404"){
